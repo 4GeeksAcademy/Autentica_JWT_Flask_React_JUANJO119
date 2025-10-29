@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { useNavigate  } from "react-router-dom";
 
-export const Navbar = () => {
-
-	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	);
-};
+export default function Navbar(){
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    navigate("/login", { replace: true });
+  };
+  const token = sessionStorage.getItem("token");
+  return (
+    <nav style={{padding:10, borderBottom:"1px solid #ddd"}}>
+      <a href="/signup" style={{marginRight:10}}>Signup</a>
+      <a href="/login" style={{marginRight:10}}>Login</a>
+      {token && <button onClick={handleLogout}>Cerrar sesión</button>}
+    </nav>
+  );
+}
