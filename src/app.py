@@ -27,6 +27,7 @@ jwt = JWTManager(app)
 
 bcrypt = Bcrypt(app)
 
+
 CORS(app)
 
 # database condiguration
