@@ -77,8 +77,8 @@ def serve_any_other_file(path):
     return response
 
 
-
-@app.route('/api/login', methods=['POST'])
+#comprobacion de usuario registrado mas token
+@app.route('/login', methods=['POST'])
 def login():
     body = request.get_json(silent=True)
     if not body:
@@ -89,21 +89,21 @@ def login():
     user = User.query.filter_by(email=body['email']).first()
     if not user or not bcrypt.check_password_hash(user.password, body['password']):
         return jsonify({'msg': 'Usuario o Contraseña incorrecta'}), 400
-
+    
     access_token = create_access_token(identity=user.email)
     return jsonify({'msg': 'Todo salió bien', 'token': access_token}), 200
 
 
 
-@app.route("/api/private", methods=["GET"])
+@app.route("/private", methods=["GET"])
 @jwt_required()
 def private():
     current_user = get_jwt_identity()
     print(current_user)
     return jsonify({'msg': 'Gracias por registrarte'}), 200
 
-
-@app.route('/api/register', methods=['POST'])
+#registrar usuario nuevo con password encriptada
+@app.route('/register', methods=['POST'])
 def register():
     body = request.get_json()
     user = User()

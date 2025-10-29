@@ -22,7 +22,7 @@ export default function PrivatePage(){
         return;
       }
       // opcional: pedir data privada
-      const r2 = await fetch("http://localhost:5000/api/private-data", {
+      const r2 = await fetch("https://poisonous-cackle-69p5q66955gg35x9w-3001.app.github.dev/", {
         headers: { "Authorization": "Bearer " + token }
       });
       if (r2.ok){
