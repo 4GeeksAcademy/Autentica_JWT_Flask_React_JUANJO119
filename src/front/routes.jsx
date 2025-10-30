@@ -16,13 +16,13 @@ import PrivatePage from "./pages/Private";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<h1>Not found!</h1>}>
-      {/* Rutas principales */}
+      {/* Rutas usadas */}
       <Route index element={<Navigate to="/login" replace />} />
       <Route path="signup" element={<Signup />} />
       <Route path="login" element={<Login />} />
       <Route path="private" element={<PrivatePage />} />
 
-      {/* Otras rutas opcionales */}
+      {/* Rutas no usadas */}
       <Route path="home" element={<Home />} />
       <Route path="single/:theId" element={<Single />} />
       <Route path="demo" element={<Demo />} />
