@@ -35,7 +35,7 @@ export default function Login() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h2>Iniciar sesión</h2>
+      <h2>Inicia sesión</h2>
       <form onSubmit={handleLogin}>
         <div>
           <label>Email</label><br />
@@ -55,7 +55,7 @@ export default function Login() {
             required
           />
         </div>
-        <button type="submit">Entrar</button>
+        <button type="submit">Inicia sesión</button>
       </form>
       {err && <div style={{ color: "red" }}>{err}</div>}
     </div>
