@@ -6,6 +6,8 @@ export default function PrivatePage() {
   const [loading, setLoading] = useState(true);
   const [secret, setSecret] = useState("");
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     if (!token) {
@@ -13,7 +15,7 @@ export default function PrivatePage() {
       return;
     }
 
-    fetch("https://poisonous-cackle-69p5q66955gg35x9w-3001.app.github.dev/private", {
+    fetch(`${backendUrl}/private`, {
       method: "GET",
       headers: { Authorization: "Bearer " + token },
     })
